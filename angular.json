@@ -66,7 +66,7 @@
               "buildTarget": "shell:build:production"
             },
             "development": {
-              "buildTarget": "shell:build"
+              "buildTarget": "shell:build:development"
             }
           },
           "defaultConfiguration": "development",
@@ -159,7 +159,7 @@
               "buildTarget": "mfe:build:production"
             },
             "development": {
-              "buildTarget": "mfe:build"
+              "buildTarget": "mfe:build:development"
             }
           },
           "defaultConfiguration": "development",
