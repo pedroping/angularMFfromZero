@@ -1,9 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal } from '@angular/core';
+import { signal } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MyLibService {
+  value = 5;
 
-  constructor() { }
+  globalState: WritableSignal<number> = signal<number>(1);
+
+  constructor() {}
+
+  init(window: (Window & typeof globalThis) | null) {
+    if (!window) return;
+    
+    const typedWindow = window as typeof window & {
+      globalState: WritableSignal<number>;
+    };
+
+    typedWindow.globalState = this.globalState;
+  }
 }

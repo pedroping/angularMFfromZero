@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "paths": {
-      "@my-lib": ["./dist/my-lib", "./projects/my-lib/src/public-api.ts"],
+      "@my-lib": ["./projects/my-lib/src/public-api.ts"],
       "mfe/Component": [
         "./projects/mfe/src/test-component/test-component.component.ts"
       ]

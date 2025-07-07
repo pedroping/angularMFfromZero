@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { MyLibService } from '@my-lib';
 
 @Component({
   selector: 'app-test-component',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
 })
 export class TestComponentComponent implements OnInit {
-  constructor() {}
+  private readonly myLibService = inject(MyLibService);
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    console.log(this.myLibService.value);
+
+    this.myLibService.value = 10;
+
+    console.log(this.myLibService.value);
+  }
 }

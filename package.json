@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start:shell": "ng serve shell  -o --port 4200",
-    "start:mfe": "ng serve mfe -o --port 4201",
+    "start:shell": "ng serve shell --port 4200",
+    "start:mfe": "ng serve mfe --port 4201",
     "start:all": "npx concurrently \"npm run start:mfe\" \"npm run start:shell\" "
   },
   "private": true,
