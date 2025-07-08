@@ -9,7 +9,11 @@
     "test": "ng test",
     "start:shell": "ng serve shell --port 4200",
     "start:mfe": "ng serve mfe --port 4201",
-    "start:all": "npx concurrently \"npm run start:mfe\" \"npm run start:shell\" "
+    "build:shell": "ng build shell",
+    "build:mfe": "ng build mfe",
+    "start:all": "npx concurrently \"npm run start:mfe\" \"npm run start:shell\" ",
+    "build:all": "npx concurrently \"npm run build:mfe\" \"npm run build:shell\" ",
+    "start:prod": "npm run build:all && npx concurrently \"npx http-server dist/mfe --cors --port 4201\" \"npx http-server dist/shell --cors --port 4200\" "
   },
   "private": true,
   "dependencies": {
