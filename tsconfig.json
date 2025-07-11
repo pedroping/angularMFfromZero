@@ -13,7 +13,8 @@
       "@my-lib": ["./projects/my-lib/src/public-api.ts"],
       "mfe/Component": [
         "./projects/mfe/src/test-component/test-component.component.ts"
-      ]
+      ],
+      "mfe/Routes": ["./projects/mfe/src/domains/routes.ts"]
     },
     "esModuleInterop": true,
     "sourceMap": true,

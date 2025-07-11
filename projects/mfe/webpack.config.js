@@ -9,6 +9,7 @@ module.exports = withModuleFederationPlugin({
   exposes: {
     "./Component":
       "./projects/mfe/src/test-component/test-component.component.ts",
+    "./Routes": "./projects/mfe/src/domains/routes.ts",
   },
 
   shared: {
