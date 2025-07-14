@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MyLibService } from '@my-lib';
+import { customSignal, MyLibService } from '@my-lib';
 import { TestComponentComponent } from 'mfe/Component';
 
 @Component({
@@ -13,13 +13,21 @@ import { TestComponentComponent } from 'mfe/Component';
 export class AppComponent implements OnInit {
   title = 'shell';
 
+  signal = customSignal('test', 'initialSignal');
+
   private readonly myLibService = inject(MyLibService);
 
   ngOnInit(): void {
-    console.log(this.myLibService.value);
+    console.log(this.myLibService.value, this.signal());
+
+    console.log(this.signal());
 
     this.myLibService.value = 10;
 
     console.log(this.myLibService.value);
+  }
+
+  update() {
+    this.signal.update((value) => 'Test ' + Math.floor(Math.random() * 10));
   }
 }
