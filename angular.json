@@ -116,6 +116,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "projects/mfe/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "deployUrl": "http://localhost:4201",
             "assets": [
               {
                 "glob": "**/*",

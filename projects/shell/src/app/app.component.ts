@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { customSignal, MyLibService } from '@my-lib';
 import { TestComponentComponent } from 'mfe/Component';
 
+declare const __webpack_public_path__: string;
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,6 +20,8 @@ export class AppComponent implements OnInit {
   private readonly myLibService = inject(MyLibService);
 
   ngOnInit(): void {
+    console.log(__webpack_public_path__);
+
     console.log(this.myLibService.value, this.signal());
 
     console.log(this.signal());
