@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { customSignal, MyLibService } from '@my-lib';
 import { TestComponentComponent } from 'mfe/Component';
 
@@ -8,7 +8,7 @@ declare const __webpack_public_path__: string;
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TestComponentComponent],
+  imports: [RouterOutlet, TestComponentComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
