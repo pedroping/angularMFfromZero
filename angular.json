@@ -148,6 +148,30 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "web-component": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "none",
+              "fileReplacements": [
+                {
+                  "replace": "projects/mfe/src/main.ts",
+                  "with": "projects/mfe/src/main-web-component.ts"
+                }
+              ],
+              "customWebpackConfig": {
+                "path": "./projects/mfe/webpack.config-web-component.js"
+              }
             }
           },
           "defaultConfiguration": "production"
