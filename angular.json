@@ -126,7 +126,10 @@
             "scripts": [],
             "customWebpackConfig": {
               "path": "./projects/mfe/webpack.config.js"
-            }
+            },
+            "aot": true,
+            "optimization": true,
+            "buildOptimizer": true
           },
           "configurations": {
             "production": {

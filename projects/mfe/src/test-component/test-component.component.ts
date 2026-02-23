@@ -1,11 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MyLibService } from '@my-lib';
+import { SharedCmpComponent } from '../app/shared-cmp/shared-cmp.component';
 
 @Component({
   selector: 'app-test-component',
   templateUrl: './test-component.component.html',
   styleUrls: ['./test-component.component.scss'],
   standalone: true,
+  imports: [SharedCmpComponent],
 })
 export class TestComponentComponent implements OnInit {
   private readonly myLibService = inject(MyLibService);
