@@ -171,7 +171,8 @@
               ],
               "customWebpackConfig": {
                 "path": "./projects/mfe/webpack.config-web-component.js"
-              }
+              },
+              "outputPath": "dist/mfe/web-c"
             }
           },
           "defaultConfiguration": "production"

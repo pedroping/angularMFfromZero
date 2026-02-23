@@ -10,7 +10,7 @@
     "start:shell": "ng serve shell --port 4200",
     "start:mfe": "ng serve mfe --port 4201",
     "build:shell": "ng build shell",
-    "build:mfe": "ng build mfe",
+    "build:mfe": "ng build mfe && npm run build:mfe-web-c",
     "build:mfe-web-c": "ng build mfe --configuration=web-component",
     "start:all": "npx concurrently \"npm run start:mfe\" \"npm run start:shell\" ",
     "build:all": "npx concurrently \"npm run build:mfe\" \"npm run build:shell\" ",
