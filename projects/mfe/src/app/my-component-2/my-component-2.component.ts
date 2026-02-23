@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedCmpComponent } from '../app/shared-cmp/shared-cmp.component';
+import { SharedCmpComponent } from '../shared-cmp/shared-cmp.component';
 
 @Component({
   selector: 'app-my-component-2',

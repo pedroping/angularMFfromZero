@@ -175,7 +175,8 @@
               "customWebpackConfig": {
                 "path": "./projects/mfe/webpack.config-web-component.js"
               },
-              "outputPath": "dist/mfe/web-c"
+              "outputPath": "dist/mfe/web-c",
+              "deployUrl": "http://localhost:4200/"
             }
           },
           "defaultConfiguration": "production"

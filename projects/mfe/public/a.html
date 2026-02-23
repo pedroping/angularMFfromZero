@@ -8,12 +8,23 @@
 </head>
 
 <body>
-  <script src="runtime.js" type="module"></script>
-  <script src="polyfills.js" type="module"></script>
-  <script src="main.js" type="module"></script>
+  <script src="http://localhost:4200/runtime.js" type="module"></script>
+  <script src="http://localhost:4200/polyfills.js" type="module"></script>
+  <script src="http://localhost:4200/main.js" type="module"></script>
 
-  <my-custom-element></my-custom-element>
-  <my-custom-element-2></my-custom-element-2>
+  <!-- <my-custom-element></my-custom-element>
+  <my-custom-element-2></my-custom-element-2> -->
+
+  <my-root></my-root>
+
+  <button id="btn-1">Test</button>
+
+  <script>
+    document.getElementById('btn-1').addEventListener('click', () => {
+      document.cookie = "username=John Smith; expires=Thu, 18 Dec 2026 12:00:00 UTC; path=/; SameSite=Strict";
+      console.log(document.cookie);
+    })
+  </script>
 
 </body>
 

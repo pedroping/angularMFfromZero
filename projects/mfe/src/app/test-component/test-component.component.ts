@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MyLibService } from '@my-lib';
-import { SharedCmpComponent } from '../app/shared-cmp/shared-cmp.component';
+import { SharedCmpComponent } from '../shared-cmp/shared-cmp.component';
 
 @Component({
   selector: 'app-test-component',
