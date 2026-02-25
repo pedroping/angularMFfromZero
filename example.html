@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://localhost:4200/styles.css">
+</head>
+
+<body>
+  <div id="host">
+    <template shadowrootmode="open">
+      <link rel="stylesheet" href="http://localhost:4200/styles.css">
+      <script src="http://localhost:4200/runtime-es2015.js" type="module"></script>
+      <script src="http://localhost:4200/runtime-es5.js" nomodule="" defer=""></script>
+      <script src="http://localhost:4200/polyfills-es5.js" nomodule="" defer=""></script>
+      <script src="http://localhost:4200/polyfills-es2015.js" type="module"></script>
+      <script src="http://localhost:4200/scripts.js" defer=""></script>
+      <script src="http://localhost:4200/main-es2015.js" type="module"></script>
+      <script src="http://localhost:4200/main-es5.js" nomodule="" defer=""></script>
+
+      <ecommerce-lfa></ecommerce-lfa>
+
+      <button id="me">Inner Message</button>
+
+      <script>
+        const hostEl = document.getElementById('host');
+        const shadow = hostEl.shadowRoot;
+        const button = shadow.getElementById('me');
+        const ecommerceLfa = shadow.querySelector('ecommerce-lfa');
+
+        if (button) {
+          button.addEventListener('click', (e) => {
+            const event = new CustomEvent('my-custom-event', {
+              bubbles: true,
+              composed: true,
+              detail: {
+                message: 'Hello from inside the Shadow DOM!'
+              }
+            });
+
+            ecommerceLfa.dispatchEvent(event);
+          });
+        }
+      </script>
+    </template>
+  </div>
+
+  <button id="me">Message</button>
+
+  <script>
+    const host = document.querySelector('#host');
+    const ecommerceLfaEl = host.shadowRoot.querySelector('ecommerce-lfa');
+
+    document.getElementById('me').addEventListener('click', () => {
+      const event = new CustomEvent('my-custom-event', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          message: 'Hello from inside the Shadow DOM!'
+        }
+      });
+
+      ecommerceLfaEl.dispatchEvent(event);
+    });
+
+    ecommerceLfaEl.addEventListener('my-custom-event', e => {
+      console.log(e)
+    });
+
+    (function observeHeadStyles() {
+      const shadow = host?.shadowRoot;
+
+      if (!shadow) {
+        console.warn("Shadow root not found. MutationObserver aborted.");
+        return;
+      }
+
+      const syncNode = (node) => {
+        const isStyle = node.tagName === 'STYLE';
+        const isLink = node.tagName === 'LINK' && node.rel === 'stylesheet';
+
+        if (isStyle || isLink) {
+          const identifier = isLink ? `link[href="${node.href}"]` : 'style';
+          const exists = isLink ? shadow.querySelector(identifier) : false;
+
+          if (!exists) {
+            shadow.appendChild(node.cloneNode(true));
+          }
+        }
+      };
+
+      document.querySelectorAll('head style, head link[rel="stylesheet"]').forEach(syncNode);
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              syncNode(node);
+            }
+          });
+        });
+      });
+
+      observer.observe(document.head, { childList: true });
+
+      console.log("Style Observer active: Watching <head> for changes...");
+    })();
+  </script>
+</body>
+
+</html>
